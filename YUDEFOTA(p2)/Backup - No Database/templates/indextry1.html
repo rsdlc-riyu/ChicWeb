@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Analysis Details</title>
+    <!-- <link rel="icon" href="https://example.com/path_to_logo_image_file.png"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
+    <!-- Load your custom CSS file from the static folder -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+<nav class="navbar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="logo-container">
+                    <img class="logo" src="{{ url_for('static', filename='chic_logo.png', _external=True) }}" alt="Logo">
+                </div>
+                <h3 class="animate-character" style="margin: 0; padding: 0;">Chic Device App</h3>
+                <h3 class="subtitle" style="margin: 0; padding: 0; font-size: 23px; color: #FAE02D; font-family: Nunito;">Hear their Cries, Save their Lives!</h3>
+            </div>
+        </div>
+    </div>
+    </nav>
+    <div class="main-content">
+    <!-- Add a Start button to initiate audio processing -->
+    <div style="text-align: right; margin-left: auto;">
+        <p style="color: #FAE02D; display: inline-block; vertical-align: middle; margin-right: 10px; font-size: 20px;">Audio Processing Status:</p>
+        <label class="switch" style="display: inline-block; vertical-align: middle; margin-bottom: 10px;">
+            <input type="checkbox" id="startButton">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="container">
+        <div class="elevated-container history-logs-container">
+            <nav class="navbar">
+                <div class="field text-center">
+                    <h3 style="color: rgba(0, 0, 0, 0.767); font-family: 'San Francisco', sans-serif; font-weight: bold; margin-bottom: 5px;">Real-Time Audio Analysis</h3>
+                </div>
+            </nav>
+            <hr>
+            <div class="elevated-container audio-analysis-sub-subcontainer">
+                <h3 style="color: rgba(0, 0, 0, 0.767); font-family: 'San Francisco', sans-serif; font-weight: bold; margin-bottom: 5px;">Cage 1</h3>
+                <div class="field-row">
+                    <span class="field-label">Current Chicken Status:</span>
+                    <!-- Update the result div to include the result text -->
+                    <p id="classificationResult">Waiting for classification...</p>
+                </div>
+                <div id="textCardContainer">
+                    <!-- Text cards will be dynamically added here -->
+                  </div>                  
+                <hr>
+                <canvas id="audioVisualizer" width="600" height="200"></canvas>
+                <hr>
+                <div class="data-container">
+                    <!-- Add an element for the maximum duration -->
+                    <div id="maxDurationInfo"><span id="maxDuration"></div>
+                    <!-- Add elements for average frequency and magnitude -->
+                    <div id="averageFrequencyInfo"><span id="averageFrequency"></span></div>
+                    <div id="averageMagnitudeInfo"><span id="averageMagnitude"></span></div>
+                </div>
+                <div>
+        <div id="spectrumGraph"></div>
+    </div>
+
+    <div>
+        <div id="spectrumGraphMagnitude"></div>
+    </div>
+                <hr>
+                <canvas id="mfccVisualizer" width="600" height="200"></canvas>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Load the socket.io.js before scripts.js -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<footer class="footer">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="footer-text">© 2023 Chic Web Application. All rights reserved.</p>
+                <p class="footer-text">This web application is for research purposes only. "Automated Bioacoustics: Recognition of Chicken Distress Vocalizations"</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
